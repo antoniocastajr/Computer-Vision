@@ -1,74 +1,61 @@
-# 🩺 Melanoma Detection Using Convolutional Neural Networks  
+# 🩺 Melanoma Detection Using Convolutional Neural Networks (CNNs)
 
-## 📌 Project Overview  
-This project focuses on enhancing **melanoma detection** using **Convolutional Neural Networks (CNNs)**. The study replicates and improves the methodology from the paper **"Melanoma Detection Using Regular Convolutional Neural Networks"** by **Aya Abu Ali and Hasan Al-Marzouqi**.  
-
-Melanoma is one of the most **aggressive types of skin cancer**, and early detection is critical. This project aims to develop an **automated CNN model** that surpasses the diagnostic accuracy of dermatologists (75-85%).  
+This repository contains a **deep learning project for detecting melanoma (skin cancer)** using **Convolutional Neural Networks**, inspired by the work of Aya Abu Ali and Hasan Al-Marzouqi. The goal is to replicate and improve upon their model for **benign vs. malignant skin lesion classification** using dermatoscopic images.
 
 ---
 
-## 🏗 Project Objectives  
-✅ **Replicate** the CNN model from the original research paper and evaluate its performance.  
-✅ **Improve sensitivity and accuracy** by modifying the CNN architecture and preprocessing techniques.  
-✅ **Compare performance** between different models and datasets.  
-✅ **Achieve at least 85% accuracy** to outperform human dermatologists.  
+## 📌 Features & Concepts Covered
+
+✔ Implementation of **two CNN architectures**: one based on the original paper and a new, improved version.  
+✔ Use of two public datasets: **ISBI 2016** and **HAM10000** for training and evaluation.  
+✔ **Image preprocessing and data augmentation** techniques to boost model generalization.  
+✔ Balanced vs. unbalanced dataset strategies: oversampling, undersampling, and class weighting.  
+✔ **Binary classification** using softmax and cross-entropy loss.  
+✔ Model evaluation using **accuracy, sensitivity, specificity**, and **confusion matrix**.  
+✔ Use of **TensorFlow and Keras** for model development.  
+✔ Thorough **comparison of original vs. improved CNN performance**.
 
 ---
 
-## 📂 Datasets Used  
+## 📘 Theory Overview
 
-### **1️⃣ ISBI Challenge 2016 Dataset**  
-- Contains **900 training images** and **379 test images**.  
-- Unbalanced dataset (more benign than malignant cases).  
-- Applied **oversampling, undersampling, and class weighting** to address imbalance.  
+This project addresses the difficulty of accurately diagnosing **melanoma**, a dangerous form of skin cancer. The paper we replicate highlights the shortcomings of their model, such as **low sensitivity**. Our enhancements focus on:
 
-### **2️⃣ HAM10000 Dataset (Human Against Machine)**  
-- Published by the **National Library of Medicine**.  
-- Contains **10,015 high-quality dermatoscopic images** collected over 20 years.  
-- Well-balanced dataset with **equal benign and malignant samples**.  
-
-👉 **Switching to the HAM10000 dataset led to significantly better results.**  
+- Building a **deeper CNN with better kernel and pooling strategies**.
+- Removing dropout and relying on **data augmentation** instead.
+- Using **balanced datasets** to reduce bias and false negatives.
+- Applying standard **binary classification loss**: categorical cross-entropy.
 
 ---
 
-## 🏗 Model Architecture  
+## 📊 Results Summary
 
-### **1️⃣ Replicated CNN from Original Paper**  
-- 5 convolutional blocks  
-- Different kernel sizes (5x5, 4x4, 1x1)  
-- Accuracy: **81.6%**  
-- **Weakness:** High specificity (98%) but very low sensitivity (**14.9%** → many false negatives).  
-
-### **2️⃣ Improved CNN Model**  
-✅ Increased to **6 convolutional blocks** for deeper feature extraction.  
-✅ Standardized **3x3 kernels** in all layers for better generalization.  
-✅ Added **batch normalization** and **data augmentation** (random flip & rotation).  
-✅ Removed **dropout layers**, improving model stability.  
-✅ Accuracy: **88%**, significantly reducing false negatives.  
+| Model         | Dataset     | Accuracy | Sensitivity | Specificity |
+|---------------|-------------|----------|-------------|-------------|
+| Original CNN  | ISBI 2016   | 81.6%    | 14.9%       | 98%         |
+| Improved CNN  | HAM10000    | 88.0%    | 85.2%       | 90.1%       |
 
 ---
 
-## 📊 Model Training & Evaluation  
+## 📈 F1 Score Comparison
 
-### **Loss Function & Optimization**  
-- **Cross-entropy loss function** for binary classification.  
-- **Adam optimizer** with an initial learning rate of **0.001**.  
-
-### **Performance Metrics**  
-📌 **Original CNN (ISBI Dataset):**  
-- Accuracy: **81.6%**  
-- Specificity: **98%**  
-- Sensitivity: **14.9%** ❌ (Many false negatives)  
-
-📌 **Improved CNN (HAM10000 Dataset):**  
-- Accuracy: **88%** ✅  
-- Sensitivity: **Significantly improved** (Lower false negatives)  
-- **Surpasses dermatologist accuracy (75-85%)** ✅  
-
-### **Confusion Matrix Analysis**  
-- Original CNN **missed 125 melanoma cases** (false negatives).  
-- Improved CNN **reduced false negatives to 73** → **safer model for medical diagnosis**.  
+The F1 score balances precision and recall, and it's especially useful for evaluating models with imbalanced data.  
+- **Original CNN F1 Score**: ~25%  
+- **Improved CNN F1 Score**: ~87%  
 
 ---
 
+## 🧠 Technologies Used
 
+- Python, Jupyter Notebooks  
+- TensorFlow + Keras  
+- Pandas, NumPy, Matplotlib  
+- Data augmentation techniques (Keras layers)  
+- Balanced datasets (oversampling, undersampling)
+
+---
+
+## 🙌 Contributors
+
+- **Antonio Castañares** – MSc in Computer Science @ Illinois Tech  
+- **Nicolás Corsini** – MSc in Computer Science @ Illinois Tech
